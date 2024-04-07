@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public float speed;
-    public float gravity=-9.81f;
+    public float gravity = -9.81f;
+    public float jumpHeight;
     Vector3 velocity;
 
     public Transform groundCheck;
@@ -21,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2;
+        }
+
+        if (Input.GetButtonDown("Jump")&& isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
 
         float x = Input.GetAxis("Horizontal");
