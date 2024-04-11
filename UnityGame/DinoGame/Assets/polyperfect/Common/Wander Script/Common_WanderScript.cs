@@ -24,6 +24,7 @@ namespace Polyperfect.Common
         [SerializeField] private AIState[] attackingStates;
         [SerializeField] private AIState[] deathStates;
 
+
         [SerializeField] public string species = "NA";
 
         [SerializeField, Tooltip("This specific animal stats asset, create a new one from the asset menu under (LowPolyAnimals/NewAnimalStats)")]
@@ -598,6 +599,7 @@ namespace Polyperfect.Common
 
             var position = transform.position;
             primaryPursuer = null;
+
             if (awareness > 0)
             {
                 var closestDistance = awareness;
