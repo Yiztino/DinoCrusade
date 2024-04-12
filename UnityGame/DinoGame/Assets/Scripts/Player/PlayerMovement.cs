@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,12 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
 
+    public Canvas deathCanvas; // Referencia al canvas que deseas activar
+
+    public float slowMotionFactor;
+    public float slowMotionDuration;
+    private bool isSlowed = false;
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -22,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2;
         }
 
-        if (Input.GetButtonDown("Jump")&& isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
@@ -34,5 +41,49 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Dinosaur"))
+        {
+            // Desactivar el movimiento del jugador
+            speed = 0f;
+            DisableGun("GunSystem");
+
+            // Activar el canvas del dinosaurio
+            if (deathCanvas != null)
+            {
+                deathCanvas.gameObject.SetActive(true);
+            }
+
+            // Ralentizar el tiempo
+            if (!isSlowed)
+            {
+                StartCoroutine(SlowMotion());
+            }
+        }
+    }
+
+    IEnumerator SlowMotion()
+    {
+        isSlowed = true;
+        Time.timeScale = slowMotionFactor;
+        yield return new WaitForSeconds(slowMotionDuration);
+        Time.timeScale = 1f;
+        isSlowed = false;
+    }
+
+    private void DisableGun(string scriptName)
+    {
+        Component[] scripts = GetComponentsInChildren<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            if (script.GetType().Name == scriptName)
+            {
+                script.enabled = false;
+                break;
+            }
+        }
     }
 }

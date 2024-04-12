@@ -7,7 +7,8 @@ public class FollowPlayer : MonoBehaviour
     private Transform player;
     private NavMeshAgent agent;
     private Animator myAnim;
-    private bool isWalking = false; // Nuevo booleano para indicar si el objeto está caminando
+    private bool isWalking = false; 
+
 
     void Start()
     {
@@ -30,22 +31,32 @@ public class FollowPlayer : MonoBehaviour
     {
         if (player != null && agent != null)
         {
-            // Establecer la posición de destino del agente
-            agent.SetDestination(player.position);
+            Vector3 directionToPlayer = player.position - transform.position;
 
-            // Activar el booleano isWalking
+            Vector3 targetPosition = player.position - directionToPlayer.normalized * 4f;
+
+            agent.SetDestination(targetPosition);
+
             if (!isWalking && agent.remainingDistance > agent.stoppingDistance)
             {
                 isWalking = true;
-                // Activar la animación de caminar
                 myAnim.SetBool("isWalking", true);
+                myAnim.SetBool("isAttacking", false);
             }
             else if (isWalking && agent.remainingDistance <= agent.stoppingDistance)
             {
                 isWalking = false;
-                // Desactivar la animación de caminar
                 myAnim.SetBool("isWalking", false);
+                myAnim.SetBool("isAttacking", true);
             }
+        }
+    }
+
+    public void StopMoving()
+    {
+        if (agent != null)
+        {
+            agent.isStopped = true;
         }
     }
 }

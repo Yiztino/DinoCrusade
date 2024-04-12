@@ -15,7 +15,7 @@ public class GunSystem : MonoBehaviour
     public RaycastHit RayHit;
     public LayerMask WhatIsEnemy;
 
-    public GameObject Flash, Bullethole;
+    public GameObject Flash;
     public TextMeshProUGUI text;
 
     private void Awake()
@@ -47,30 +47,29 @@ public class GunSystem : MonoBehaviour
     private void Shoot()
     {
         readytoShoot = false;
-        float x = Random.Range(-Spread, Spread);
-        float y = Random.Range(-Spread, Spread);
-        Vector3 direction = Cam.transform.position + new Vector3(x,y,0);
 
+        // Creamos el rayo en la dirección de la cámara
+        Ray ray = Cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(Cam.transform.position, direction, out RayHit, Range, WhatIsEnemy))
+        if (Physics.Raycast(ray, out RayHit, Range, WhatIsEnemy))
         {
-            Debug.Log(RayHit.collider.name);
-            if (RayHit.collider.CompareTag("Enemy"))
+            if (RayHit.collider.CompareTag("DinosaurBody"))
             {
-                //RayHit.collider.GetComponent<Enemy>.TakeDamage(damage);
-                Debug.Log("CU CU PUMASSS");
+                // Lógica para dañar al enemigo
+                RayHit.collider.GetComponent<DinosaurHealth>().TakeDamage(Damage);
+                Debug.Log("Hit");
             }
         }
 
-        //Instantiate(Bullethole, RayHit.point, Quaternion.Euler(0, 180, 0));
         GameObject MuzzleFlash = Instantiate(Flash, AttackPoint.position, Quaternion.identity);
-        Destroy(MuzzleFlash, .5f);
+        Destroy(MuzzleFlash, .2f);
+
         bulletsleft--;
         bulletsshot--;
         Invoke("ResetShot", TimeBetweenShooting);
 
-        if(bulletsshot > 0 && bulletsleft > 0)
-        Invoke("Shoot", TimeBetweenShots);
+        if (bulletsshot > 0 && bulletsleft > 0)
+            Invoke("Shoot", TimeBetweenShots);
     }
 
     private void ResetShot()
