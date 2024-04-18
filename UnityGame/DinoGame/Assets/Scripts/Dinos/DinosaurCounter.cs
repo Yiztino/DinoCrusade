@@ -5,10 +5,11 @@ using TMPro;
 
 public class DinosaurCounter : MonoBehaviour
 {
-    public string objectTag; 
-    public TextMeshProUGUI countText; 
+    public string objectTag;
+    public TextMeshProUGUI countText;
 
-    private int objectCount; 
+    private int objectCount;
+
     void Start()
     {
         UpdateObjectCount();
@@ -41,5 +42,10 @@ public class DinosaurCounter : MonoBehaviour
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag(objectTag);
         return objects.Length != objectCount;
+    }
+
+    public bool AreAllObjectsDestroyed()
+    {
+        return objectCount == 0;
     }
 }

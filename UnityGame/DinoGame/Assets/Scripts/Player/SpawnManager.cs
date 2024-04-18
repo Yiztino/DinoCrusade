@@ -1,15 +1,20 @@
 using UnityEngine;
 using System.Collections;
 
-public class ObjectSpawner : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] objectsToSpawn; 
-    public Transform[] spawnPoints; 
-    public float spawnInterval = 2f; 
-    public bool spawnOnStart = true; 
+    public GameObject[] objectsToSpawn;
+    public Transform[] spawnPoints;
+    public float spawnInterval;
+    public bool spawnOnStart = true;
+    public int round = 1;
+
+    private DinosaurCounter dinosaurCounter;
 
     void Start()
     {
+        dinosaurCounter = FindObjectOfType<DinosaurCounter>();
+
         if (spawnOnStart)
         {
             StartSpawning();
@@ -30,15 +35,25 @@ public class ObjectSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(spawnInterval);
+            if (dinosaurCounter != null && dinosaurCounter.AreAllObjectsDestroyed())
+            {
+                int objectsToSpawnThisRound = round * 5;
 
-            int randomObjectIndex = Random.Range(0, objectsToSpawn.Length);
-            GameObject objectToSpawn = objectsToSpawn[randomObjectIndex];
+                for (int i = 0; i < objectsToSpawnThisRound; i++)
+                {
+                    int randomObjectIndex = Random.Range(0, objectsToSpawn.Length);
+                    GameObject objectToSpawn = objectsToSpawn[randomObjectIndex];
 
-            int randomSpawnIndex = Random.Range(0, spawnPoints.Length);
-            Transform spawnPoint = spawnPoints[randomSpawnIndex];
+                    int randomSpawnIndex = Random.Range(0, spawnPoints.Length);
+                    Transform spawnPoint = spawnPoints[randomSpawnIndex];
 
-            Instantiate(objectToSpawn, spawnPoint.position, Quaternion.identity);
+                    Instantiate(objectToSpawn, spawnPoint.position, Quaternion.identity);
+                }
+
+                round++;
+            }
+
+            yield return null;
         }
     }
 }
