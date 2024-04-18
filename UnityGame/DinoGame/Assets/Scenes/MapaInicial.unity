@@ -393,11 +393,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2031391975018925581, guid: ad8c3cb93ed1ee348b1a966d99056ba3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fcdb12f119c3f184f81656dad7dbb841, type: 2}
     - target: {fileID: 2339041413942341693, guid: ad8c3cb93ed1ee348b1a966d99056ba3,
         type: 3}
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 3716925480122050245, guid: ad8c3cb93ed1ee348b1a966d99056ba3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fcdb12f119c3f184f81656dad7dbb841, type: 2}
     - target: {fileID: 3720583776669889836, guid: ad8c3cb93ed1ee348b1a966d99056ba3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -448,6 +458,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3952919955606594452, guid: ad8c3cb93ed1ee348b1a966d99056ba3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fcdb12f119c3f184f81656dad7dbb841, type: 2}
+    - target: {fileID: 6305306271097337019, guid: ad8c3cb93ed1ee348b1a966d99056ba3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fcdb12f119c3f184f81656dad7dbb841, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -480,7 +500,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   Flash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
-  Bullethole: {fileID: 1031560401822814, guid: 3c0b5f221ea995442b9d11dc526de1c0, type: 3}
   text: {fileID: 2537279026426334167}
 --- !u!222 &2328992151209370122
 CanvasRenderer:
@@ -696,6 +715,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  deathCanvas: {fileID: 0}
+  slowMotionFactor: 0
+  slowMotionDuration: 0
 --- !u!1 &2995191175070508895
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +786,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: cf3ac7b53144a2c48a486e66490fced6, type: 3}
+  - {fileID: 2100000, guid: 5ec31908784e4414c8d53792b6288e5e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
