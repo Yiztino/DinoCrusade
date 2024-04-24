@@ -6000,6 +6000,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: T-Rex_Final
       objectReference: {fileID: 0}
+    - target: {fileID: 914457718255600151, guid: 80a77f27e6f1d9d48be7422eef3920d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7964741136334845492, guid: 80a77f27e6f1d9d48be7422eef3920d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6013,7 +6018,7 @@ PrefabInstance:
     - target: {fileID: 7964741136334845492, guid: 80a77f27e6f1d9d48be7422eef3920d0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.621785
+      value: -23.68
       objectReference: {fileID: 0}
     - target: {fileID: 7964741136334845492, guid: 80a77f27e6f1d9d48be7422eef3920d0,
         type: 3}
@@ -6557,6 +6562,7 @@ GameObject:
   - component: {fileID: 8623382533656825986}
   - component: {fileID: 1575812493189074832}
   - component: {fileID: 8705258125043522353}
+  - component: {fileID: 8705258125043522354}
   m_Layer: 0
   m_Name: FPP
   m_TagString: Player
@@ -6596,6 +6602,84 @@ MonoBehaviour:
   deathCanvas: {fileID: 704846885}
   slowMotionFactor: 0.3
   slowMotionDuration: 10
+--- !u!114 &8705258125043522354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663525371422324599}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12d69041d081e04699316e3a4d4f4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveInput:
+    m_Name: Move Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: db1a0530-ef42-4817-b8d8-b7780528dc5c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 3f048120-801d-4587-9391-65dd845a2e59
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 9f22e309-d974-440e-b9bf-1c84511a0868
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 3eb85963-9677-4b60-92fd-e4df7c0fd3db
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 5d4f9e02-3b6c-4058-9ced-0db987779241
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 3c7b7441-bfb6-4d60-9984-6b7dc65c6a3e
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    m_Flags: 0
+  _cameraInput:
+    m_Name: Camera Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: eb0c4f68-e345-4b4f-9c83-17c3f3c2d050
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 012160f9-7825-4453-8b71-06d27feedcf0
+      m_Path: <Mouse>/delta
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Camera Input
+      m_Flags: 0
+    m_Flags: 0
 --- !u!114 &8903393466343432994
 MonoBehaviour:
   m_ObjectHideFlags: 0

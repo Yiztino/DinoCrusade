@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
 
-    public Canvas deathCanvas; 
+    public Canvas deathCanvas;
 
     public float slowMotionFactor;
     public float slowMotionDuration;
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2;
         }
 
-        if ((Input.GetButtonDown("Jump") && isGrounded)) 
+        if ((Input.GetButtonDown("Jump") && isGrounded))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
