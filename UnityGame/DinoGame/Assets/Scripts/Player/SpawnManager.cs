@@ -5,15 +5,21 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] objectsToSpawn;
     public Transform[] spawnPoints;
-    public float spawnInterval;
+    //public float spawnInterval;
     public bool spawnOnStart = true;
     public int round = 1;
 
     private DinosaurCounter dinosaurCounter;
 
+    private RoundManager roundManager;
+
+    public Canvas betweenRounds;
+    public Canvas shopCanvas;
+
     void Start()
     {
         dinosaurCounter = FindObjectOfType<DinosaurCounter>();
+        roundManager = FindAnyObjectByType<RoundManager>();
 
         if (spawnOnStart)
         {
@@ -26,10 +32,6 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SpawnObjectWithInterval());
     }
 
-    public void StopSpawning()
-    {
-        StopCoroutine(SpawnObjectWithInterval());
-    }
 
     IEnumerator SpawnObjectWithInterval()
     {
@@ -51,9 +53,14 @@ public class SpawnManager : MonoBehaviour
                 }
 
                 round++;
+                if (roundManager != null)
+                {
+                    roundManager.PauseGame();
+                }
             }
 
             yield return null;
         }
     }
+
 }

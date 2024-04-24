@@ -14,11 +14,16 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
 
-    public Canvas deathCanvas; // Referencia al canvas que deseas activar
+    public Canvas deathCanvas; 
 
     public float slowMotionFactor;
     public float slowMotionDuration;
     private bool isSlowed = false;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     void Update()
     {
@@ -29,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2;
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if ((Input.GetButtonDown("Jump") && isGrounded)) 
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
@@ -47,17 +52,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Dinosaur"))
         {
-            // Desactivar el movimiento del jugador
             speed = 0f;
             DisableGun("GunSystem");
 
-            // Activar el canvas del dinosaurio
             if (deathCanvas != null)
             {
                 deathCanvas.gameObject.SetActive(true);
+                print("Morido");
             }
 
-            // Ralentizar el tiempo
             if (!isSlowed)
             {
                 StartCoroutine(SlowMotion());

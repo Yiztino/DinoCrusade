@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool isGamePaused = false;
+    public Canvas betweenRounds;
+    public Canvas shopCanvas;
+
+    public void PauseGame()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
+        betweenRounds.gameObject.SetActive(true);
+        print("Pausa");
+        isGamePaused = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResumeGame()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
+        betweenRounds.gameObject.SetActive(false);
+        isGamePaused = false;
+        print("Despausa xd");
+    }
+
+    public void ShowShop()
+    {
+        shopCanvas.gameObject.SetActive(true);
+        betweenRounds.gameObject.SetActive(false);
+    }
+
+    public void HideShop()
+    {
+        shopCanvas.gameObject.SetActive(false);
+        ResumeGame();
     }
 }
