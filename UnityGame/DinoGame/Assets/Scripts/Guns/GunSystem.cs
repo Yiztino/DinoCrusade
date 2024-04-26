@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class GunSystem : MonoBehaviour
 {
@@ -32,12 +33,20 @@ public class GunSystem : MonoBehaviour
 
     private void MyInput()
     {
-        if (AllowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
-        else shooting = Input.GetKeyDown(KeyCode.Mouse0);
+        // Disparo con el mouse
+        if (AllowButtonHold)
+            shooting = Mouse.current.leftButton.isPressed || Gamepad.current.rightTrigger.isPressed;
+        else
+            shooting = Mouse.current.leftButton.wasPressedThisFrame || Gamepad.current.rightTrigger.wasPressedThisFrame;
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsleft < MagSize && !reloading) Reload();
+        // Recargar con R o el botón de recarga del control
+        if (Keyboard.current.rKey.wasPressedThisFrame || Gamepad.current.buttonWest.wasPressedThisFrame)
+        {
+            if (bulletsleft < MagSize && !reloading)
+                Reload();
+        }
 
-        if(readytoShoot&& shooting && !reloading && bulletsleft > 0)
+        if (readytoShoot && shooting && !reloading && bulletsleft > 0)
         {
             bulletsshot = BulletsPerTap;
             Shoot();
@@ -49,7 +58,7 @@ public class GunSystem : MonoBehaviour
         readytoShoot = false;
 
         // Creamos el rayo en la dirección de la cámara
-        Ray ray = Cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (Physics.Raycast(ray, out RayHit, Range, WhatIsEnemy))
         {
