@@ -1242,7 +1242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &451002402
 Transform:
   m_ObjectHideFlags: 0
@@ -1315,7 +1315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &530768212
 Transform:
   m_ObjectHideFlags: 0
@@ -4581,7 +4581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1650590987
 Transform:
   m_ObjectHideFlags: 0
@@ -5716,7 +5716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2127277603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5766,7 +5766,7 @@ GameObject:
   - component: {fileID: 4381845443569669602}
   - component: {fileID: 1957806342751297832}
   - component: {fileID: 5332175015619278482}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SubmachineGun_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5799,7 +5799,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -5814,7 +5814,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -5871,12 +5871,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7563583413647963744}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d89500dcebaa5c045bbf99dd8d99cd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 200
+  mouseSensitivity: 15
+  controllerSensitivity: 1
+  joystickDeadzone: 0.1
   Player: {fileID: 8623382533656825986}
 --- !u!143 &1575812493189074832
 CharacterController:
@@ -5958,7 +5960,7 @@ Transform:
   m_GameObject: {fileID: 7563583413647963744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.665, z: -0.168}
+  m_LocalPosition: {x: 0.035, y: 0.665, z: -0.057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6003,7 +6005,7 @@ PrefabInstance:
     - target: {fileID: 914457718255600151, guid: 80a77f27e6f1d9d48be7422eef3920d0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7964741136334845492, guid: 80a77f27e6f1d9d48be7422eef3920d0,
         type: 3}
@@ -6484,7 +6486,7 @@ GameObject:
   - component: {fileID: 624041871225795254}
   - component: {fileID: 5181415906982359360}
   - component: {fileID: 1448029408420245098}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -6508,7 +6510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9216087633527965401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -6526,7 +6528,7 @@ GameObject:
   - component: {fileID: 7306533301067802835}
   - component: {fileID: 7942829179545042986}
   - component: {fileID: 7413020234793451409}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6542,7 +6544,7 @@ Transform:
   m_GameObject: {fileID: 8663525371422324599}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.9884405, z: -0, w: -0.15160947}
-  m_LocalPosition: {x: -9.17, y: 2.565, z: 32.78}
+  m_LocalPosition: {x: 3.46, y: 1.298, z: 6.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6564,7 +6566,7 @@ GameObject:
   - component: {fileID: 8705258125043522353}
   - component: {fileID: 8705258125043522355}
   - component: {fileID: 8705258125043522354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FPP
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6586,7 +6588,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8663525371422324599}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e676c437b3dd99341b274562d183152c, type: 3}
   m_Name: 
@@ -6603,6 +6605,7 @@ MonoBehaviour:
   deathCanvas: {fileID: 704846885}
   slowMotionFactor: 0.3
   slowMotionDuration: 10
+  leftJoystickDeadzone: 0.1
 --- !u!114 &8705258125043522354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6693,7 +6696,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8663525371422324599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fd36f74524a1fc44acd4036686c3a57, type: 3}
   m_Name: 

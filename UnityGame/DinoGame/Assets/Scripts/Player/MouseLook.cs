@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSensitivity=100f;
+    public float mouseSensitivity;
+    public float controllerSensitivity; 
+    public float joystickDeadzone = 0.1f; 
     public Transform Player;
     float xRotation;
 
@@ -15,12 +18,26 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Mouse.current.delta.x.ReadValue() * mouseSensitivity * Time.fixedDeltaTime;
+        float mouseY = Mouse.current.delta.y.ReadValue() * mouseSensitivity * Time.fixedDeltaTime;
 
-        xRotation -= mouseY;
+        float controllerX = Gamepad.current.rightStick.x.ReadValue();
+        float controllerY = Gamepad.current.rightStick.y.ReadValue();
+
+        if (Mathf.Abs(controllerX) < joystickDeadzone)
+        {
+            controllerX = 0f;
+        }
+
+        if (Mathf.Abs(controllerY) < joystickDeadzone)
+        {
+            controllerY = 0f;
+        }
+
+        xRotation -= mouseY + controllerY * controllerSensitivity;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        Player.Rotate(Vector3.up * mouseX);
+        Player.Rotate(Vector3.up * (mouseX + controllerX * controllerSensitivity));
     }
 }

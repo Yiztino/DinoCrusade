@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public float slowMotionDuration;
     private bool isSlowed = false;
 
+    public float leftJoystickDeadzone = 0.1f;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,13 +37,41 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2;
         }
 
-        if ((Input.GetButtonDown("Jump") && isGrounded))
+        if ((Keyboard.current.spaceKey.wasPressedThisFrame || Gamepad.current.buttonSouth.wasPressedThisFrame) && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+            print("Salto");
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = 0f;
+        float z = 0f;
+
+        if (Keyboard.current != null)
+        {
+            x += Keyboard.current.aKey.isPressed ? -1f : 0f;
+            x += Keyboard.current.dKey.isPressed ? 1f : 0f;
+            z += Keyboard.current.sKey.isPressed ? -1f : 0f;
+            z += Keyboard.current.wKey.isPressed ? 1f : 0f;
+        }
+
+        if (Gamepad.current != null)
+        {
+            float leftStickX = Gamepad.current.leftStick.x.ReadValue();
+            float leftStickY = Gamepad.current.leftStick.y.ReadValue();
+
+            if (Mathf.Abs(leftStickX) < leftJoystickDeadzone)
+            {
+                leftStickX = 0f;
+            }
+
+            if (Mathf.Abs(leftStickY) < leftJoystickDeadzone)
+            {
+                leftStickY = 0f;
+            }
+
+            x += leftStickX;
+            z += leftStickY;
+        }
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);

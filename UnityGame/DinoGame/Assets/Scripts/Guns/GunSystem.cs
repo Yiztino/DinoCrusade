@@ -33,13 +33,11 @@ public class GunSystem : MonoBehaviour
 
     private void MyInput()
     {
-        // Disparo con el mouse
         if (AllowButtonHold)
             shooting = Mouse.current.leftButton.isPressed || Gamepad.current.rightTrigger.isPressed;
         else
             shooting = Mouse.current.leftButton.wasPressedThisFrame || Gamepad.current.rightTrigger.wasPressedThisFrame;
 
-        // Recargar con R o el botón de recarga del control
         if (Keyboard.current.rKey.wasPressedThisFrame || Gamepad.current.buttonWest.wasPressedThisFrame)
         {
             if (bulletsleft < MagSize && !reloading)
@@ -57,14 +55,12 @@ public class GunSystem : MonoBehaviour
     {
         readytoShoot = false;
 
-        // Creamos el rayo en la dirección de la cámara
         Ray ray = Cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (Physics.Raycast(ray, out RayHit, Range, WhatIsEnemy))
         {
             if (RayHit.collider.CompareTag("DinosaurBody"))
             {
-                // Lógica para dañar al enemigo
                 RayHit.collider.GetComponent<DinosaurHealth>().TakeDamage(Damage);
                 Debug.Log("Hit");
             }
