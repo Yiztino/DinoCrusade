@@ -413,6 +413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaMaxima: 20
+  Points: 10
+  pointsText: {fileID: 0}
 --- !u!1 &1027225551758724276
 GameObject:
   m_ObjectHideFlags: 0
