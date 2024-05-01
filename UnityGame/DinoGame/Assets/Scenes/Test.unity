@@ -6593,7 +6593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 336122967696500200}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6636,19 +6636,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2675622539980941549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503345230800026657}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d845153ac61ff4f4bae47730acb36183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTag: Player
 --- !u!1 &2697210359166374642
 GameObject:
   m_ObjectHideFlags: 0
@@ -7042,7 +7029,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5594789618758921849}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Geometry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7159,7 +7146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8251217290815037987}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7210,11 +7197,10 @@ GameObject:
   - component: {fileID: 8587163990234532755}
   - component: {fileID: 1325586070651525904}
   - component: {fileID: 6056456159724740428}
-  - component: {fileID: 2675622539980941549}
   - component: {fileID: 7525703349997492587}
   - component: {fileID: 3986643489756120418}
-  - component: {fileID: 8587163990234532756}
   - component: {fileID: 8587163990234532757}
+  - component: {fileID: 8587163990234532756}
   m_Layer: 7
   m_Name: T-Rex_Final
   m_TagString: DinosaurBody
@@ -9216,20 +9202,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8587163990234532756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4503345230800026657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e59e454dd1102458edcf767060aff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dinoData: {fileID: 11400000, guid: 93a10303725f35041a571f1b28102a0c, type: 2}
---- !u!135 &8587163990234532757
+--- !u!135 &8587163990234532756
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9242,14 +9215,27 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+    m_Bits: 648
+  m_LayerOverridePriority: 10
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8587163990234532757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503345230800026657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e59e454dd1102458edcf767060aff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dinoData: {fileID: 11400000, guid: 93a10303725f35041a571f1b28102a0c, type: 2}
 --- !u!1 &8650976281424294498
 GameObject:
   m_ObjectHideFlags: 0
@@ -9316,9 +9302,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6282924394920631663}
   - component: {fileID: 5608766350013724895}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: trex
-  m_TagString: DinosaurBody
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
