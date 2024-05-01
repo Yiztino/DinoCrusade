@@ -18,7 +18,5 @@ MonoBehaviour:
   velocity: 5
   damage: 50
   health: 1000
-  hostileTowards:
-  - {fileID: 2483530522562783964, guid: 228139cc64dd8cd4886a0925796f5e2c, type: 3}
-  - {fileID: 5005475779678025853, guid: 759b81f2404da714ebee8d070fb09c34, type: 3}
+  hostileTowards: []
   nonHostileTowards: []
