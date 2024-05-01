@@ -9,7 +9,7 @@ public class DinosaurHealth : MonoBehaviour
     private Animator myAnim;
     private MeshCollider body;
 
-    private FollowPlayer followPlayer;
+    //private FollowPlayer followPlayer;
 
     public int Points;
     public TextMeshProUGUI pointsText;
@@ -25,7 +25,7 @@ public class DinosaurHealth : MonoBehaviour
         vidaActual = vidaMaxima;
         myAnim = GetComponent<Animator>();
         body = GetComponent<MeshCollider>();
-        followPlayer = GetComponent<FollowPlayer>();
+        //followPlayer = GetComponent<FollowPlayer>();
         pointsText = GameObject.Find("FPS_UI/Points").GetComponent<TextMeshProUGUI>();
         pointsTextRound = GameObject.Find("BetweenRounds/BG/Points").GetComponent<TextMeshProUGUI>();
         killsText = GameObject.Find("BetweenRounds/BG/Kills").GetComponent<TextMeshProUGUI>();
@@ -54,7 +54,7 @@ public class DinosaurHealth : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        followPlayer.StopMoving();
+        //followPlayer.StopMoving();
         body.enabled = false;
         myAnim.SetBool("isDead", true);
 
