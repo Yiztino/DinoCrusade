@@ -7077,7 +7077,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4503345230800026657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fcd380deed5efa4387b727b2e93def4, type: 3}
   m_Name: 
@@ -7200,7 +7200,7 @@ GameObject:
   - component: {fileID: 7525703349997492587}
   - component: {fileID: 3986643489756120418}
   - component: {fileID: 8587163990234532757}
-  - component: {fileID: 8587163990234532756}
+  - component: {fileID: 8587163990234532758}
   m_Layer: 7
   m_Name: T-Rex_Final
   m_TagString: DinosaurBody
@@ -7709,7 +7709,7 @@ GameObject:
   - component: {fileID: 9160133279239194349}
   m_Layer: 7
   m_Name: DinosaurMouth
-  m_TagString: DinosaurBody
+  m_TagString: DinoAttackPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8812,7 +8812,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -9202,28 +9202,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!135 &8587163990234532756
-SphereCollider:
+--- !u!114 &8587163990234532757
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4503345230800026657}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 648
-  m_LayerOverridePriority: 10
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8587163990234532757
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e59e454dd1102458edcf767060aff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dinoData: {fileID: 11400000, guid: 93a10303725f35041a571f1b28102a0c, type: 2}
+--- !u!114 &8587163990234532758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9232,10 +9224,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 4503345230800026657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e59e454dd1102458edcf767060aff0, type: 3}
+  m_Script: {fileID: 11500000, guid: faafdfe3a5169944ca6203bbb4302aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dinoData: {fileID: 11400000, guid: 93a10303725f35041a571f1b28102a0c, type: 2}
+  agent: {fileID: 6056456159724740428}
+  player: {fileID: 5162509267670355942}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 8
+  health: 20
+  body: {fileID: 7525703349997492587}
+  attackCollider: {fileID: 0}
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 5
+  sightRange: 20
+  attackRange: 4
+  playerInSight: 0
+  playerInAttackRange: 0
 --- !u!1 &8650976281424294498
 GameObject:
   m_ObjectHideFlags: 0

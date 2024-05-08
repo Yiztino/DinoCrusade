@@ -61,7 +61,7 @@ public class GunSystem : MonoBehaviour
         {
             if (RayHit.collider.CompareTag("DinosaurBody"))
             {
-                RayHit.collider.GetComponent<DinosaurHealth>().TakeDamage(Damage);
+                RayHit.collider.GetComponent<DinoAI>().TakeDamage(Damage);
                 Debug.Log("Hit");
             }
         }

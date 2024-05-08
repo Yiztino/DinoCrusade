@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Dinosaur"))
+        if (other.CompareTag("DinoAttackPoint"))
         {
             speed = 0f;
             DisableGun("GunSystem");

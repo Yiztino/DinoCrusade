@@ -39,7 +39,7 @@ public class DinosaurHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int dmgAmout)
+    public void TakeDamage1(int dmgAmout)
     {
         vidaActual -= dmgAmout;
 
