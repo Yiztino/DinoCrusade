@@ -1,0 +1,6 @@
+{
+    "name": "DinoAITest",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

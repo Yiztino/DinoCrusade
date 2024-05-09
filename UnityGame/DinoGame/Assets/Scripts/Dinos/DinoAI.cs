@@ -62,6 +62,7 @@ public class DinoAI : MonoBehaviour
     private void Patroling()
     {
         myAnim.SetBool("isWalking", true);
+        print("Patrolling");
 
         if (!walkPointSet)
         {
@@ -86,6 +87,7 @@ public class DinoAI : MonoBehaviour
         myAnim.SetBool("isWalking", true);
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomx = Random.Range(-walkPointRange, walkPointRange);
+        print("Searchingwalkpoint");
 
         walkPoint = new Vector3(transform.position.x + randomx, transform.position.y, transform.position.z+randomZ);
 
@@ -99,6 +101,7 @@ public class DinoAI : MonoBehaviour
     {
         myAnim.SetBool("isWalking", true);
         agent.SetDestination(player.position);
+        print("Chasing");
     }
 
     private void Attacking() //no se como usar esto jajajaj xd
@@ -106,6 +109,7 @@ public class DinoAI : MonoBehaviour
         agent.SetDestination(transform.position);
         myAnim.SetBool("isWalking", false);
         myAnim.SetBool("isAttacking", true);
+        print("Attacking");
     }
 
     public void TakeDamage(int damage)
@@ -124,6 +128,7 @@ public class DinoAI : MonoBehaviour
         Destroy(gameObject, 20);
         myAnim.SetBool("isDead", true);
         body.enabled = false;
+        print("Dead");
 
         Transform mouthTransform = transform.Find("DinosaurMouth");
         if (mouthTransform != null)
