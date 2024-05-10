@@ -20,7 +20,7 @@ public class DinoAI : MonoBehaviour
 
     //Patrullaje
     public Vector3 walkPoint;
-    bool walkPointSet;
+    public bool walkPointSet;
     public float walkPointRange;
 
     
@@ -34,7 +34,7 @@ public class DinoAI : MonoBehaviour
         //attackPoint = GetComponent<GameObject>();
         body = GetComponent<MeshCollider>();
         myAnim = GetComponent<Animator>();
-        player = GameObject.Find("FPP").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -59,7 +59,7 @@ public class DinoAI : MonoBehaviour
         }
     }
 
-    private void Patroling()
+    public void Patroling()
     {
         myAnim.SetBool("isWalking", true);
         print("Patrolling");
