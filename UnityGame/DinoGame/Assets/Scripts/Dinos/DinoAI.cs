@@ -125,7 +125,7 @@ public class DinoAI : MonoBehaviour
     private void DestroyDino()
     {
         agent.isStopped = true;
-        Destroy(gameObject, 20);
+        Destroy(gameObject, 3);
         myAnim.SetBool("isDead", true);
         body.enabled = false;
         print("Dead");

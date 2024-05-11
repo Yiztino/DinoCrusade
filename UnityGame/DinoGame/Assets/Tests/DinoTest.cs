@@ -15,7 +15,7 @@ public class DinosaurCounterTest
         dinosaurCounter.UpdateObjectCount();
 
         // Assert
-        Assert.AreEqual(0, dinosaurCounter.objectCount); // Assuming there are no objects with the "T-Rex_Final" tag in the scene initially
+        Assert.AreEqual(0, dinosaurCounter.objectCount);
     }
 
     [Test]
