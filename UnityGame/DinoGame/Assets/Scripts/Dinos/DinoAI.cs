@@ -15,7 +15,6 @@ public class DinoAI : MonoBehaviour
 
     //Colliders/triggers
     public MeshCollider body;
-    //public GameObject attackPoint;
     public BoxCollider attackCollider;
 
     //Patrullaje
@@ -23,15 +22,20 @@ public class DinoAI : MonoBehaviour
     public bool walkPointSet;
     public float walkPointRange;
 
-    
     //Estados
     public float sightRange, attackRange;
     public bool playerInSight, playerInAttackRange;
 
+    // Evento para cuando el Dino muere
+    public delegate void DinoKilled(int points);
+    public static event DinoKilled OnDinoKilled;
+    private bool isDead = false;
+
+    //Points
+    public int Points;
+
     private void Awake()
     {
-        //attackCollider = attackPoint.GetComponent<BoxCollider>();
-        //attackPoint = GetComponent<GameObject>();
         body = GetComponent<MeshCollider>();
         myAnim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -62,7 +66,7 @@ public class DinoAI : MonoBehaviour
     public void Patroling()
     {
         myAnim.SetBool("isWalking", true);
-        print("Patrolling");
+        //print("Patrolling");
 
         if (!walkPointSet)
         {
@@ -87,7 +91,7 @@ public class DinoAI : MonoBehaviour
         myAnim.SetBool("isWalking", true);
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomx = Random.Range(-walkPointRange, walkPointRange);
-        print("Searchingwalkpoint");
+        //print("Searchingwalkpoint");
 
         walkPoint = new Vector3(transform.position.x + randomx, transform.position.y, transform.position.z+randomZ);
 
@@ -101,15 +105,15 @@ public class DinoAI : MonoBehaviour
     {
         myAnim.SetBool("isWalking", true);
         agent.SetDestination(player.position);
-        print("Chasing");
+        //print("Chasing");
     }
 
-    private void Attacking() //no se como usar esto jajajaj xd
+    private void Attacking()
     {
         agent.SetDestination(transform.position);
         myAnim.SetBool("isWalking", false);
         myAnim.SetBool("isAttacking", true);
-        print("Attacking");
+        //print("Attacking");
     }
 
     public void TakeDamage(int damage)
@@ -124,21 +128,28 @@ public class DinoAI : MonoBehaviour
 
     private void DestroyDino()
     {
-        agent.isStopped = true;
-        Destroy(gameObject, 3);
-        myAnim.SetBool("isDead", true);
-        body.enabled = false;
-        print("Dead");
-
-        Transform mouthTransform = transform.Find("DinosaurMouth");
-        if (mouthTransform != null)
+        if (!isDead)
         {
-            GameObject mouthObject = mouthTransform.gameObject;
-            BoxCollider mouthCollider = mouthObject.GetComponent<BoxCollider>();
-            if (mouthCollider != null)
+            isDead = true;
+            agent.isStopped = true;
+            myAnim.SetBool("isDead", true);
+            body.enabled = false;
+            print("Dead");
+
+            OnDinoKilled?.Invoke(Points);
+
+            Transform mouthTransform = transform.Find("DinosaurMouth");
+            if (mouthTransform != null)
             {
-                mouthCollider.enabled = false;
+                GameObject mouthObject = mouthTransform.gameObject;
+                BoxCollider mouthCollider = mouthObject.GetComponent<BoxCollider>();
+                if (mouthCollider != null)
+                {
+                    mouthCollider.enabled = false;
+                }
             }
+
+            Destroy(gameObject, 3);
         }
     }
 

@@ -5,6 +5,4 @@ using UnityEngine;
 public class DinoPoints : MonoBehaviour
 {
     public int Points;
-
-
 }
