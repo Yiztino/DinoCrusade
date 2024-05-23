@@ -19,10 +19,18 @@ public class GunSystem : MonoBehaviour
     public GameObject Flash;
     public TextMeshProUGUI text;
 
+    public AudioClip shootingSound;
+    private AudioSource audioSource;
+
     private void Awake()
     {
         bulletsleft = MagSize;
         readytoShoot = true;
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component missing from the GameObject.");
+        }
     }
 
     private void Update()
@@ -54,6 +62,17 @@ public class GunSystem : MonoBehaviour
     private void Shoot()
     {
         readytoShoot = false;
+
+        // Play shooting sound
+        if (shootingSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(shootingSound);
+            Debug.Log("Playing shooting sound.");
+        }
+        else
+        {
+            Debug.LogWarning("Shooting sound or AudioSource is not set.");
+        }
 
         Ray ray = Cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 

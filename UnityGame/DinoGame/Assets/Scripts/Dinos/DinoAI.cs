@@ -34,12 +34,21 @@ public class DinoAI : MonoBehaviour
     //Points
     public int Points;
 
+    //Kill Counter
+    private DinosaurCounter dinosaurCounter;
+
+    //Audio
+    public AudioClip destroySound;
+    private AudioSource audioSource;
+
     private void Awake()
     {
         body = GetComponent<MeshCollider>();
         myAnim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        dinosaurCounter = FindObjectOfType<DinosaurCounter>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -134,9 +143,14 @@ public class DinoAI : MonoBehaviour
             agent.isStopped = true;
             myAnim.SetBool("isDead", true);
             body.enabled = false;
-            print("Dead");
 
             OnDinoKilled?.Invoke(Points);
+
+            // Actualizar los puntos guardados
+            int currentPoints = PlayerPrefs.GetInt("TotalPoints", 0);
+            currentPoints += Points;
+            PlayerPrefs.SetInt("TotalPoints", currentPoints);
+            PlayerPrefs.Save();
 
             Transform mouthTransform = transform.Find("DinosaurMouth");
             if (mouthTransform != null)
@@ -147,6 +161,17 @@ public class DinoAI : MonoBehaviour
                 {
                     mouthCollider.enabled = false;
                 }
+            }
+
+            if (dinosaurCounter != null)
+            {
+                dinosaurCounter.IncrementKillsCount();
+            }
+
+            // Play the destroy sound
+            if (destroySound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(destroySound);
             }
 
             Destroy(gameObject, 3);
