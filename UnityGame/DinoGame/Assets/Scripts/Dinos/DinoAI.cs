@@ -74,6 +74,8 @@ public class DinoAI : MonoBehaviour
 
     public void Patroling()
     {
+        myAnim.SetBool("isRunning", false);
+        myAnim.SetBool("isAttacking", false);
         myAnim.SetBool("isWalking", true);
         //print("Patrolling");
 
@@ -98,6 +100,7 @@ public class DinoAI : MonoBehaviour
     private void SearchWalkPoint()
     {
         myAnim.SetBool("isWalking", true);
+        myAnim.SetBool("isRunning", false);
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomx = Random.Range(-walkPointRange, walkPointRange);
         //print("Searchingwalkpoint");
@@ -112,7 +115,8 @@ public class DinoAI : MonoBehaviour
 
     private void Chasing()
     {
-        myAnim.SetBool("isWalking", true);
+        myAnim.SetBool("isWalking", false);
+        myAnim.SetBool("isRunning", true);
         agent.SetDestination(player.position);
         //print("Chasing");
     }
@@ -121,6 +125,7 @@ public class DinoAI : MonoBehaviour
     {
         agent.SetDestination(transform.position);
         myAnim.SetBool("isWalking", false);
+        myAnim.SetBool("isRunning", false);
         myAnim.SetBool("isAttacking", true);
         //print("Attacking");
     }
@@ -142,6 +147,9 @@ public class DinoAI : MonoBehaviour
             isDead = true;
             agent.isStopped = true;
             myAnim.SetBool("isDead", true);
+            myAnim.SetBool("isRunning", false);
+            myAnim.SetBool("isWalking", false);
+            print("im dying");
             body.enabled = false;
 
             OnDinoKilled?.Invoke(Points);

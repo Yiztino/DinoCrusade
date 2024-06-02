@@ -5,14 +5,14 @@ using TMPro;
 
 public class DinosaurCounter : MonoBehaviour
 {
-    public TextMeshProUGUI countText, killsText; // Nueva variable para el contador de kills
+    public TextMeshProUGUI countText, killsText; 
 
-    public int objectCount, killsCount; // Nueva variable para llevar el conteo de kills
+    public int objectCount, killsCount; 
 
     void Start()
     {
         UpdateObjectCount();
-        UpdateKillsText(); // Inicializamos el texto de kills
+        UpdateKillsText(); 
     }
 
     void Update()
@@ -49,14 +49,12 @@ public class DinosaurCounter : MonoBehaviour
         return objectCount == 0;
     }
 
-    // Método para incrementar el contador de kills y actualizar el texto
     public void IncrementKillsCount()
     {
         killsCount++;
         UpdateKillsText();
     }
 
-    // Método para actualizar el texto del contador de kills
     void UpdateKillsText()
     {
         if (killsText != null)
