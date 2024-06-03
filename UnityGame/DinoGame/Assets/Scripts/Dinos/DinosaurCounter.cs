@@ -17,6 +17,7 @@ public class DinosaurCounter : MonoBehaviour
 
     void Update()
     {
+
         if (ObjectCountChanged())
         {
             UpdateObjectCount();

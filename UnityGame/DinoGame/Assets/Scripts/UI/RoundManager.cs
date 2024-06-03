@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    private bool isGamePaused = false;
+    private bool isGamePaused = true;
     public Canvas betweenRounds;
     public Canvas shopCanvas;
 
+    private void Start()
+    {
+        isGamePaused = false;
+    }
     public void PauseGame()
     {
         Cursor.lockState = CursorLockMode.None;

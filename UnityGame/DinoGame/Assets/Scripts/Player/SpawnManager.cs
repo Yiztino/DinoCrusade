@@ -8,13 +8,12 @@ public class SpawnManager : MonoBehaviour
     public Transform[] spawnPoints;
     public bool spawnOnStart = true;
     public int round = 1;
-    public int pointsPerRound = 10;  // Puntos añadidos por cada ronda completada
-    public TextMeshProUGUI roundPointsText;  // Referencia al TextMeshProUGUI para mostrar los puntos
+    public int pointsPerRound = 10;  
+    public TextMeshProUGUI roundPointsText;  
 
     private DinosaurCounter dinosaurCounter;
     private RoundManager roundManager;
 
-    public Canvas betweenRounds;
     public Canvas shopCanvas;
 
     void Start()
@@ -22,13 +21,9 @@ public class SpawnManager : MonoBehaviour
         dinosaurCounter = FindObjectOfType<DinosaurCounter>();
         roundManager = FindAnyObjectByType<RoundManager>();
 
-        // Inicializar el texto de puntos al inicio
         UpdatePointsText();
 
-        if (spawnOnStart)
-        {
-            StartSpawning();
-        }
+        StartSpawning();
     }
 
     public void StartSpawning()
@@ -38,10 +33,17 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnObjectWithInterval()
     {
+        int uwu = 1;
         while (true)
         {
-            if (dinosaurCounter != null && dinosaurCounter.AreAllObjectsDestroyed())
+            if (dinosaurCounter != null && (dinosaurCounter.AreAllObjectsDestroyed()))
             {
+
+                if (dinosaurCounter.objectCount == 0 && uwu !=1)
+                {
+                    roundManager.PauseGame();
+                }
+
                 int objectsToSpawnThisRound = round * 5;
 
                 for (int i = 0; i < objectsToSpawnThisRound; i++)
@@ -55,28 +57,22 @@ public class SpawnManager : MonoBehaviour
                     Instantiate(objectToSpawn, spawnPoint.position, Quaternion.identity);
                 }
 
-                // Incrementar la ronda y pausar el juego
                 round++;
-                if (roundManager != null)
-                {
-                    roundManager.PauseGame();
-                }
 
-                // Agregar puntos por la ronda completada y guardarlos en PlayerPrefs
                 int roundPoints = PlayerPrefs.GetInt("Round Points", 0);
                 roundPoints += pointsPerRound;
                 PlayerPrefs.SetInt("Round Points", roundPoints);
                 PlayerPrefs.Save();
 
-                // Actualizar el texto de puntos
                 UpdatePointsText();
             }
+
+            uwu = 2;
 
             yield return null;
         }
     }
 
-    // Método para actualizar el texto de puntos
     void UpdatePointsText()
     {
         if (roundPointsText != null)
