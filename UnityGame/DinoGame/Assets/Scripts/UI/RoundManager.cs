@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
@@ -36,5 +35,10 @@ public class RoundManager : MonoBehaviour
     {
         shopCanvas.gameObject.SetActive(false);
         ResumeGame();
+    }
+
+    public void MainMenu(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
