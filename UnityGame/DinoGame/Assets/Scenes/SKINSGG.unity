@@ -2118,7 +2118,7 @@ RectTransform:
   m_GameObject: {fileID: 727181846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 22, y: 15, z: 0}
+  m_LocalScale: {x: 19.273697, y: 10.805359, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2401270311471225059}
@@ -3693,6 +3693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 919132149323770548}
+  baseSkin: {fileID: 2100000, guid: 46096371f23b83c429b478cb1b13a0ad, type: 2}
   grassSkins:
   - {fileID: 2100000, guid: 6b173c1c7ce0cd242a9fb2637ec04984, type: 2}
   fireSkins:
@@ -4315,7 +4316,7 @@ RectTransform:
   m_GameObject: {fileID: 1187535681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.0891767, y: 2.8825, z: 2.8825}
+  m_LocalScale: {x: 3.528107, y: 1.998313, z: 1.998313}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2401270311471225059}
@@ -5236,7 +5237,7 @@ RectTransform:
   m_GameObject: {fileID: 1589287035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.974907, y: 2.8825, z: 2.8825}
+  m_LocalScale: {x: 3.1280723, y: 1.8124294, z: 1.8124294}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2401270311471225059}
@@ -6218,14 +6219,14 @@ RectTransform:
   m_GameObject: {fileID: 1792073260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.88508, y: 0.88508, z: 0.88508}
+  m_LocalScale: {x: 0.6816797, y: 0.6816797, z: 0.6816797}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2401270311471225059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -813, y: 618}
+  m_AnchoredPosition: {x: -714, y: 418}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1792073262
@@ -6653,7 +6654,7 @@ RectTransform:
   m_GameObject: {fileID: 1945643698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 19.154383, y: 9.615, z: 4.2189555}
+  m_LocalScale: {x: 16.780716, y: 6.926235, z: 3.24906}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2401270311471225059}
@@ -7230,10 +7231,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 919132149379637109}
+  baseSkin: {fileID: 2100000, guid: 46096371f23b83c429b478cb1b13a0ad, type: 2}
   grassSkins:
-  - {fileID: 2100000, guid: 298813bf8c171754a81ec60f456da81d, type: 2}
-  fireSkins:
   - {fileID: 2100000, guid: 6b173c1c7ce0cd242a9fb2637ec04984, type: 2}
+  fireSkins:
+  - {fileID: 2100000, guid: 298813bf8c171754a81ec60f456da81d, type: 2}
   waterSkins:
   - {fileID: 2100000, guid: ae6d4186ff7cf1d4eb7b96ac15d41f5c, type: 2}
 --- !u!4 &2072570967

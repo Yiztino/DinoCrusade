@@ -241,6 +241,103 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &1412576985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1412576987}
+  - component: {fileID: 1412576986}
+  m_Layer: 0
+  m_Name: SkinApplier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1412576986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412576985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefba652366be4a4ca3f69159bceea90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinSelector: {fileID: 1485710446}
+--- !u!4 &1412576987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412576985}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 962.3528, y: 677.8193, z: -240.19977}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1485710445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485710447}
+  - component: {fileID: 1485710446}
+  m_Layer: 0
+  m_Name: SkinSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1485710446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485710445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849d4ff0d94e61449a7c91bb4e243b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 5873101710403915989}
+  baseSkin: {fileID: 2100000, guid: 46096371f23b83c429b478cb1b13a0ad, type: 2}
+  grassSkins:
+  - {fileID: 2100000, guid: 6b173c1c7ce0cd242a9fb2637ec04984, type: 2}
+  fireSkins:
+  - {fileID: 2100000, guid: 298813bf8c171754a81ec60f456da81d, type: 2}
+  waterSkins:
+  - {fileID: 2100000, guid: ae6d4186ff7cf1d4eb7b96ac15d41f5c, type: 2}
+--- !u!4 &1485710447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485710445}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 962.3528, y: 677.8193, z: -240.19977}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &67067102700060918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -501,6 +598,7 @@ MonoBehaviour:
     m_Bits: 128
   Flash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
   text: {fileID: 2537279026426334167}
+  shootingSound: {fileID: 0}
 --- !u!222 &2328992151209370122
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -718,6 +816,7 @@ MonoBehaviour:
   deathCanvas: {fileID: 0}
   slowMotionFactor: 0
   slowMotionDuration: 0
+  leftJoystickDeadzone: 0.1
 --- !u!1 &2995191175070508895
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +1005,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 200
+  controllerSensitivity: 0
+  joystickDeadzone: 0.1
   Player: {fileID: 2739983338984702122}
 --- !u!23 &5368728994104668416
 MeshRenderer:
@@ -1148,3 +1249,5 @@ SceneRoots:
   - {fileID: 1718855296536316218}
   - {fileID: 2739983338984702122}
   - {fileID: 7645526836676648658}
+  - {fileID: 1412576987}
+  - {fileID: 1485710447}

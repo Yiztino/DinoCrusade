@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SkinSelector : MonoBehaviour
 {
     public GameObject weapon; // Referencia al objeto del arma
+    public Material baseSkin; // Material base para la skin del arma
     public Material[] grassSkins; // Materiales para las skins de hierba
     public Material[] fireSkins; // Materiales para las skins de fuego
     public Material[] waterSkins; // Materiales para las skins de agua
@@ -12,39 +14,43 @@ public class SkinSelector : MonoBehaviour
     private const string SkinTypeKey = "SkinType";
     private const string SkinIndexKey = "SkinIndex";
 
+    private Dictionary<string, Material[]> skins;
+
     void Start()
     {
         weaponRenderer = weapon.GetComponent<Renderer>();
+
+        // Inicializar el diccionario de skins
+        skins = new Dictionary<string, Material[]>
+        {
+            { "Grass", grassSkins },
+            { "Fire", fireSkins },
+            { "Water", waterSkins }
+        };
+
         LoadWeaponSkin();
     }
 
-    // Método para cambiar la skin del arma a la de hierba
     public void SetGrassSkin(int skinIndex)
     {
-        SetWeaponSkin(grassSkins, skinIndex);
-        SaveWeaponSkin("Grass", skinIndex);
+        SetWeaponSkin("Grass", skinIndex);
     }
 
-    // Método para cambiar la skin del arma a la de fuego
     public void SetFireSkin(int skinIndex)
     {
-        SetWeaponSkin(fireSkins, skinIndex);
-        SaveWeaponSkin("Fire", skinIndex);
+        SetWeaponSkin("Fire", skinIndex);
     }
 
-    // Método para cambiar la skin del arma a la de agua
     public void SetWaterSkin(int skinIndex)
     {
-        SetWeaponSkin(waterSkins, skinIndex);
-        SaveWeaponSkin("Water", skinIndex);
+        SetWeaponSkin("Water", skinIndex);
     }
 
-    // Método para cambiar la skin del arma
-    private void SetWeaponSkin(Material[] skins, int skinIndex)
+    private void SetWeaponSkin(string skinType, int skinIndex)
     {
-        if (skinIndex >= 0 && skinIndex < skins.Length)
+        if (skins.ContainsKey(skinType) && skinIndex >= 0 && skinIndex < skins[skinType].Length)
         {
-            Material selectedSkin = skins[skinIndex];
+            Material selectedSkin = skins[skinType][skinIndex];
             Material[] weaponMaterials = weaponRenderer.materials;
 
             for (int i = 0; i < weaponMaterials.Length; i++)
@@ -53,18 +59,23 @@ public class SkinSelector : MonoBehaviour
             }
 
             weaponRenderer.materials = weaponMaterials;
+            SaveWeaponSkin(skinType, skinIndex);
+            Debug.Log($"Skin cambiada a: {skinType} con índice: {skinIndex}");
+        }
+        else
+        {
+            Debug.LogWarning("Índice de skin fuera de rango o tipo de skin desconocido");
         }
     }
 
-    // Método para guardar la skin seleccionada en PlayerPrefs
     private void SaveWeaponSkin(string skinType, int skinIndex)
     {
         PlayerPrefs.SetString(SkinTypeKey, skinType);
         PlayerPrefs.SetInt(SkinIndexKey, skinIndex);
         PlayerPrefs.Save();
+        Debug.Log($"Skin guardada: {skinType} con índice: {skinIndex}");
     }
 
-    // Método para cargar la skin seleccionada desde PlayerPrefs
     private void LoadWeaponSkin()
     {
         if (PlayerPrefs.HasKey(SkinTypeKey) && PlayerPrefs.HasKey(SkinIndexKey))
@@ -72,22 +83,28 @@ public class SkinSelector : MonoBehaviour
             string skinType = PlayerPrefs.GetString(SkinTypeKey);
             int skinIndex = PlayerPrefs.GetInt(SkinIndexKey);
 
-            switch (skinType)
-            {
-                case "Grass":
-                    SetWeaponSkin(grassSkins, skinIndex);
-                    break;
-                case "Fire":
-                    SetWeaponSkin(fireSkins, skinIndex);
-                    break;
-                case "Water":
-                    SetWeaponSkin(waterSkins, skinIndex);
-                    break;
-            }
+            SetWeaponSkin(skinType, skinIndex);
+        }
+        else
+        {
+            SetBaseSkin();
+            Debug.Log("No se encontró skin guardada, aplicando skin base");
         }
     }
 
-    // Método para aplicar la skin cargada (puede ser llamado manualmente después de cambiar de escena)
+    private void SetBaseSkin()
+    {
+        Material[] weaponMaterials = weaponRenderer.materials;
+
+        for (int i = 0; i < weaponMaterials.Length; i++)
+        {
+            weaponMaterials[i] = baseSkin;
+        }
+
+        weaponRenderer.materials = weaponMaterials;
+        Debug.Log("Skin base aplicada");
+    }
+
     public void ApplySavedSkin()
     {
         LoadWeaponSkin();
