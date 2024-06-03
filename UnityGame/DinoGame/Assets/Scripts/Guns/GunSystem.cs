@@ -63,11 +63,9 @@ public class GunSystem : MonoBehaviour
     {
         readytoShoot = false;
 
-        // Play shooting sound
         if (shootingSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(shootingSound);
-            Debug.Log("Playing shooting sound.");
         }
         else
         {

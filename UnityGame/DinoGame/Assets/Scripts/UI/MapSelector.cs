@@ -74,27 +74,23 @@ public class MapSelector : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
         ResumeGame();
-
     }
 
     public void Mapa2(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
         ResumeGame();
-
     }
 
     public void Mapa3(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
         ResumeGame();
-
     }
 
     public void Mapa4(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
         ResumeGame();
-
     }
 }

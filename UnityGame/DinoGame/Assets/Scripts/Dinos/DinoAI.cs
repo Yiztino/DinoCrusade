@@ -146,9 +146,10 @@ public class DinoAI : MonoBehaviour
         {
             isDead = true;
             agent.isStopped = true;
-            myAnim.SetBool("isDead", true);
             myAnim.SetBool("isRunning", false);
             myAnim.SetBool("isWalking", false);
+            myAnim.SetBool("isAttacking", true);
+            myAnim.SetBool("isDead", true);
             print("im dying");
             body.enabled = false;
 
