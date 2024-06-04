@@ -3040,7 +3040,6 @@ GameObject:
   m_Component:
   - component: {fileID: 492715460}
   - component: {fileID: 492715459}
-  - component: {fileID: 492715458}
   - component: {fileID: 492715461}
   m_Layer: 0
   m_Name: Main Camera
@@ -3049,14 +3048,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &492715458
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492715457}
-  m_Enabled: 1
 --- !u!20 &492715459
 Camera:
   m_ObjectHideFlags: 0
@@ -3910,7 +3901,6 @@ GameObject:
   m_Component:
   - component: {fileID: 612347222}
   - component: {fileID: 612347221}
-  - component: {fileID: 612347220}
   - component: {fileID: 612347219}
   m_Layer: 0
   m_Name: Camera
@@ -3963,14 +3953,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &612347220
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612347218}
-  m_Enabled: 0
 --- !u!20 &612347221
 Camera:
   m_ObjectHideFlags: 0
@@ -7804,7 +7786,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MAPA1
+          m_StringArgument: MainScene
           m_BoolArgument: 0
         m_CallState: 2
   hoverEvent:
@@ -12114,7 +12096,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2038293861}
   - component: {fileID: 2038293860}
-  - component: {fileID: 2038293859}
   - component: {fileID: 2038293858}
   m_Layer: 0
   m_Name: Camera (1)
@@ -12167,14 +12148,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &2038293859
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038293857}
-  m_Enabled: 1
 --- !u!20 &2038293860
 Camera:
   m_ObjectHideFlags: 0
