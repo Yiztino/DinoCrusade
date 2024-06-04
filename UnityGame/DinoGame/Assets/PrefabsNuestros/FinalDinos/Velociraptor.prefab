@@ -383,7 +383,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.69
-  m_Speed: 3
+  m_Speed: 4
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 300
@@ -448,7 +448,9 @@ MonoBehaviour:
   playerInSight: 0
   playerInAttackRange: 0
   Points: 0
-  destroySound: {fileID: 0}
+  destroySound: {fileID: 8300000, guid: fdb1a2682df414355aeb78bced89e225, type: 3}
+  patrolSpeed: 3.5
+  chaseSpeed: 5
 --- !u!82 &5648849100327874376
 AudioSource:
   m_ObjectHideFlags: 0

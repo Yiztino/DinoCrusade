@@ -2015,7 +2015,9 @@ MonoBehaviour:
   playerInSight: 0
   playerInAttackRange: 0
   Points: 0
-  destroySound: {fileID: 0}
+  destroySound: {fileID: 8300000, guid: 2f571a8c400ff4666b60dd46dc3f2dbc, type: 3}
+  patrolSpeed: 3.5
+  chaseSpeed: 4
 --- !u!82 &8562610464112553579
 AudioSource:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class RoundManager : MonoBehaviour
     private bool isGamePaused = true;
     public Canvas betweenRounds;
     public Canvas shopCanvas;
+    public Canvas goodEnding;
+
 
     private void Start()
     {
@@ -16,6 +18,16 @@ public class RoundManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         betweenRounds.gameObject.SetActive(true);
+        print("Pausa");
+        isGamePaused = true;
+    }
+
+    public void GoodEnding()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
+        betweenRounds.gameObject.SetActive(false);
+        goodEnding.gameObject.SetActive(true);
         print("Pausa");
         isGamePaused = true;
     }

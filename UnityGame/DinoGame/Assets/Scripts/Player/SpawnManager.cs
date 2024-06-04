@@ -7,14 +7,15 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] objectsToSpawn;
     public Transform[] spawnPoints;
     public bool spawnOnStart = true;
-    public int round = 1;
+    public int round;
     public int pointsPerRound = 10;  
-    public TextMeshProUGUI roundPointsText;  
+    public TextMeshProUGUI roundPointsText;
+    public int maxRounds;
 
     private DinosaurCounter dinosaurCounter;
     private RoundManager roundManager;
+    private bool gameEnded = false;
 
-    public Canvas shopCanvas;
 
     void Start()
     {
@@ -34,7 +35,8 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnObjectWithInterval()
     {
         int uwu = 1;
-        while (true)
+
+        while (round <= maxRounds && !gameEnded)
         {
             if (dinosaurCounter != null && (dinosaurCounter.AreAllObjectsDestroyed()))
             {
@@ -44,7 +46,7 @@ public class SpawnManager : MonoBehaviour
                     roundManager.PauseGame();
                 }
 
-                int objectsToSpawnThisRound = round * 5;
+                int objectsToSpawnThisRound = round * 3;
 
                 for (int i = 0; i < objectsToSpawnThisRound; i++)
                 {
@@ -68,9 +70,20 @@ public class SpawnManager : MonoBehaviour
             }
 
             uwu = 2;
-
+            StopCoroutine("SpawnObjectWithInterval");
             yield return null;
         }
+
+        TheEnd();
+    }
+
+    void TheEnd()
+    {
+        gameEnded = true;
+
+        print("el fiiiiin");
+
+        roundManager.GoodEnding();
     }
 
     void UpdatePointsText()

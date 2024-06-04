@@ -1,5 +1,6 @@
 using UnityEngine.AI;
 using UnityEngine;
+using System.Collections;
 
 public class DinoAI : MonoBehaviour
 {
@@ -13,16 +14,16 @@ public class DinoAI : MonoBehaviour
 
     private Animator myAnim;
 
-    //Colliders/triggers
+    // Colliders/triggers
     public MeshCollider body;
     public BoxCollider attackCollider;
 
-    //Patrullaje
+    // Patrullaje
     public Vector3 walkPoint;
     public bool walkPointSet;
     public float walkPointRange;
 
-    //Estados
+    // Estados
     public float sightRange, attackRange;
     public bool playerInSight, playerInAttackRange;
 
@@ -31,15 +32,21 @@ public class DinoAI : MonoBehaviour
     public static event DinoKilled OnDinoKilled;
     private bool isDead = false;
 
-    //Points
+    // Points
     public int Points;
 
-    //Kill Counter
+    // Kill Counter
     private DinosaurCounter dinosaurCounter;
 
-    //Audio
+    // Audio
     public AudioClip destroySound;
     private AudioSource audioSource;
+    private Coroutine patrolCoroutine;
+
+    //Speed
+    public float patrolSpeed;
+    public float chaseSpeed;
+
 
     private void Awake()
     {
@@ -61,7 +68,7 @@ public class DinoAI : MonoBehaviour
             Patroling();
         }
 
-        if (playerInSight&& !playerInAttackRange)
+        if (playerInSight && !playerInAttackRange)
         {
             Chasing();
         }
@@ -72,21 +79,23 @@ public class DinoAI : MonoBehaviour
         }
     }
 
-    public void Patroling()
+
+    private void Patroling()
     {
         myAnim.SetBool("isRunning", false);
         myAnim.SetBool("isAttacking", false);
         myAnim.SetBool("isWalking", true);
-        //print("Patrolling");
 
         if (!walkPointSet)
         {
             SearchWalkPoint();
         }
 
-        if (walkPointSet)
+        if (walkPointSet && patrolCoroutine == null)
         {
+            agent.speed = patrolSpeed; 
             agent.SetDestination(walkPoint);
+            patrolCoroutine = StartCoroutine(CheckIfArrived());
         }
 
         Vector3 distanceToWalk = transform.position - walkPoint;
@@ -103,11 +112,10 @@ public class DinoAI : MonoBehaviour
         myAnim.SetBool("isRunning", false);
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomx = Random.Range(-walkPointRange, walkPointRange);
-        //print("Searchingwalkpoint");
 
-        walkPoint = new Vector3(transform.position.x + randomx, transform.position.y, transform.position.z+randomZ);
+        walkPoint = new Vector3(transform.position.x + randomx, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, - transform.up, 2, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 2, whatIsGround))
         {
             walkPointSet = true;
         }
@@ -117,8 +125,8 @@ public class DinoAI : MonoBehaviour
     {
         myAnim.SetBool("isWalking", false);
         myAnim.SetBool("isRunning", true);
+        agent.speed = chaseSpeed; 
         agent.SetDestination(player.position);
-        //print("Chasing");
     }
 
     private void Attacking()
@@ -127,7 +135,6 @@ public class DinoAI : MonoBehaviour
         myAnim.SetBool("isWalking", false);
         myAnim.SetBool("isRunning", false);
         myAnim.SetBool("isAttacking", true);
-        //print("Attacking");
     }
 
     public void TakeDamage(int damage)
@@ -148,14 +155,13 @@ public class DinoAI : MonoBehaviour
             agent.isStopped = true;
             myAnim.SetBool("isRunning", false);
             myAnim.SetBool("isWalking", false);
-            myAnim.SetBool("isAttacking", true);
+            myAnim.SetBool("isAttacking", false);
             myAnim.SetBool("isDead", true);
             print("im dying");
             body.enabled = false;
 
             OnDinoKilled?.Invoke(Points);
 
-            // Actualizar los puntos guardados
             int currentPoints = PlayerPrefs.GetInt("TotalPoints", 0);
             currentPoints += Points;
             PlayerPrefs.SetInt("TotalPoints", currentPoints);
@@ -177,7 +183,6 @@ public class DinoAI : MonoBehaviour
                 dinosaurCounter.IncrementKillsCount();
             }
 
-            // Play the destroy sound
             if (destroySound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(destroySound);
@@ -185,6 +190,28 @@ public class DinoAI : MonoBehaviour
 
             Destroy(gameObject, 3);
         }
+    }
+
+    private IEnumerator CheckIfArrived()
+    {
+        float waitTime = 6f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < waitTime)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                walkPointSet = false;
+                patrolCoroutine = null;
+                yield break; 
+            }
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        walkPointSet = false;
+        SearchWalkPoint();
+        patrolCoroutine = null;
     }
 
     private void OnDrawGizmos()
