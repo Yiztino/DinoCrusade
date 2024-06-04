@@ -317,8 +317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 5873101710403915989}
   baseSkin: {fileID: 2100000, guid: 46096371f23b83c429b478cb1b13a0ad, type: 2}
-  grassSkins:
-  - {fileID: 2100000, guid: 6b173c1c7ce0cd242a9fb2637ec04984, type: 2}
+  goldSkins:
+  - {fileID: 2100000, guid: dccae2bd66210374f9267df3eb104113, type: 2}
   fireSkins:
   - {fileID: 2100000, guid: 298813bf8c171754a81ec60f456da81d, type: 2}
   waterSkins:

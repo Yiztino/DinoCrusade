@@ -5,7 +5,7 @@ public class SkinSelector : MonoBehaviour
 {
     public GameObject weapon; // Referencia al objeto del arma
     public Material baseSkin; // Material base para la skin del arma
-    public Material[] grassSkins; // Materiales para las skins de hierba
+    public Material[] goldSkins; // Materiales para las skins de hierba
     public Material[] fireSkins; // Materiales para las skins de fuego
     public Material[] waterSkins; // Materiales para las skins de agua
 
@@ -23,7 +23,7 @@ public class SkinSelector : MonoBehaviour
         // Inicializar el diccionario de skins
         skins = new Dictionary<string, Material[]>
         {
-            { "Grass", grassSkins },
+            { "Gold", goldSkins },
             { "Fire", fireSkins },
             { "Water", waterSkins }
         };
@@ -31,9 +31,9 @@ public class SkinSelector : MonoBehaviour
         LoadWeaponSkin();
     }
 
-    public void SetGrassSkin(int skinIndex)
+    public void SetGoldSkin(int skinIndex)
     {
-        SetWeaponSkin("Grass", skinIndex);
+        SetWeaponSkin("Gold", skinIndex);
     }
 
     public void SetFireSkin(int skinIndex)
