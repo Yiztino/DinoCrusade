@@ -21,10 +21,11 @@ public class PlayerMovement : MonoBehaviour
     public float slowMotionDuration;
     private bool isSlowed = false;
 
-    public float leftJoystickDeadzone = 0.1f;
+    public float leftJoystickDeadzone = 0.2f;
 
     private void Start()
     {
+        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -84,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("DinoAttackPoint"))
         {
             speed = 0f;
+            Cursor.lockState = CursorLockMode.None;
             DisableGun("GunSystem");
 
             if (deathCanvas != null)
