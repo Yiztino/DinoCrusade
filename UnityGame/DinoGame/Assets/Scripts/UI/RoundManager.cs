@@ -16,6 +16,7 @@ public class RoundManager : MonoBehaviour
     public void PauseGame()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0f;
         betweenRounds.gameObject.SetActive(true);
         print("Pausa");

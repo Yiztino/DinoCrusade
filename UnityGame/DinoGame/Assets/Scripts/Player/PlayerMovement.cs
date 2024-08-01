@@ -86,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = 0f;
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             DisableGun("GunSystem");
 
             if (deathCanvas != null)
